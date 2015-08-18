@@ -4,11 +4,11 @@ namespace SilverStripe\BehatExtension\Context;
 
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
-    Behat\Behat\Context\BehatContext,
+    Behat\Behat\Context\Context,
+    Behat\Behat\Context\SnippetAcceptingContext,
     Behat\Behat\Definition\Call,
-    Behat\Behat\Event\StepEvent,
-    Behat\Behat\Event\ScenarioEvent,
-    Behat\Behat\Exception\PendingException;
+    Behat\Behat\EventDispatcher\Event,
+    Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
@@ -25,7 +25,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  * Handles redirections.
  * Handles AJAX enabled links, buttons and forms - jQuery is assumed.
  */
-class BasicContext extends BehatContext
+class BasicContext implements Context, SnippetAcceptingContext
 {
     protected $context;
 

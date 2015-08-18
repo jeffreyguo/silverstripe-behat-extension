@@ -3,10 +3,11 @@
 namespace SilverStripe\BehatExtension\Context;
 
 use Behat\Behat\Context\ClosuredContextInterface,
-Behat\Behat\Context\TranslatedContextInterface,
-Behat\Behat\Context\BehatContext,
-Behat\Behat\Definition\Call,
-Behat\Behat\Exception\PendingException;
+    Behat\Behat\Context\TranslatedContextInterface,
+    Behat\Behat\Context\Context,
+    Behat\Behat\Context\SnippetAcceptingContext,
+    Behat\Behat\Definition\Call,
+    Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
 Behat\Gherkin\Node\TableNode;
 
@@ -19,7 +20,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  *
  * Context used to define steps related to login and logout functionality
  */
-class LoginContext extends BehatContext
+class LoginContext implements Context, SnippetAcceptingContext
 {
     protected $context;
 

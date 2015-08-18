@@ -2,10 +2,11 @@
 
 namespace SilverStripe\BehatExtension\Context;
 
-use Behat\Behat\Definition\Call,
-	Behat\Behat\Event\FeatureEvent,
-	Behat\Behat\Event\ScenarioEvent,
-	Behat\Behat\Event\SuiteEvent;
+use Behat\Behat\Context\Context,
+	Behat\Behat\Context\SnippetAcceptingContext,
+	Behat\Behat\Definition\Call,
+	Behat\Behat\EventDispatcher\Event,
+	Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Driver\GoutteDriver,

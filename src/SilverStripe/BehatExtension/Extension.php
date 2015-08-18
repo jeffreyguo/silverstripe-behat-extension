@@ -125,4 +125,27 @@ class Extension implements ExtensionInterface
             end()->
         end();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getConfigKey()
+    {
+        return 'mink';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function initialize(ExtensionManager $extensionManager)
+    {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function process(ContainerBuilder $container)
+    {
+//        $this->processSelectors($container);
+    }
 }

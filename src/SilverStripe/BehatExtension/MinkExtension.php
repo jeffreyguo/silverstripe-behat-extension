@@ -11,9 +11,7 @@ class MinkExtension extends \Behat\MinkExtension\ServiceContainer\MinkExtension
 
     public function getCompilerPasses()
     {
-        return array_merge(
-            array(new Compiler\MinkExtensionBaseUrlPass()),
-            parent::getCompilerPasses()
+        return (array(new Compiler\MinkExtensionBaseUrlPass())
         );
     }
 
