@@ -49,6 +49,5 @@
 			"framework",
 			"vendor/phpunit/phpunit"
 		]
-	},
-	"minimum-stability": "dev"
+	}
 }
