@@ -5,7 +5,6 @@ namespace SilverStripe\BehatExtension\Context;
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\Context,
-    Behat\Behat\Context\SnippetAcceptingContext,
     Behat\Behat\Context\Step,
     Behat\Behat\EventDispatcher\Event,
     Behat\Behat\Tester\Exception\PendingException;
@@ -20,7 +19,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 /**
  * Context used to define steps related to email sending.
  */
-class EmailContext implements Context, SnippetAcceptingContext
+class EmailContext extends Context
 {
     protected $context;
 

@@ -5,7 +5,6 @@ namespace SilverStripe\BehatExtension\Context;
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\Context,
-    Behat\Behat\Context\SnippetAcceptingContext,
     Behat\Behat\Definition\Call,
     Behat\Behat\EventDispatcher\Event,
     Behat\Behat\Tester\Exception\PendingException;
@@ -25,7 +24,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
  * Handles redirections.
  * Handles AJAX enabled links, buttons and forms - jQuery is assumed.
  */
-class BasicContext implements Context, SnippetAcceptingContext
+class BasicContext extends Context
 {
     protected $context;
 

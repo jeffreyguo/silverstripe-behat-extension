@@ -20,7 +20,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 /**
  * Context used to create fixtures in the SilverStripe ORM.
  */
-class FixtureContext implements Context, SnippetAcceptingContext
+class FixtureContext extends Context
 {
 	protected $context;
 

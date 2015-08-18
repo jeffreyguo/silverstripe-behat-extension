@@ -3,7 +3,6 @@
 namespace SilverStripe\BehatExtension\Context;
 
 use Behat\Behat\Context\Context,
-	Behat\Behat\Context\SnippetAcceptingContext,
 	Behat\Behat\Definition\Call,
 	Behat\Behat\EventDispatcher\Event,
 	Behat\Behat\Tester\Exception\PendingException;
