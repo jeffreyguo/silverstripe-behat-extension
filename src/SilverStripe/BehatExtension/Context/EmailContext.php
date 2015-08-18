@@ -3,12 +3,12 @@
 namespace SilverStripe\BehatExtension\Context;
 
 use Behat\Behat\Context\ClosuredContextInterface,
-Behat\Behat\Context\TranslatedContextInterface,
-Behat\Behat\Context\BehatContext,
-Behat\Behat\Context\Step,
-Behat\Behat\Event\FeatureEvent,
-Behat\Behat\Event\ScenarioEvent,
-Behat\Behat\Exception\PendingException;
+	Behat\Behat\Context\TranslatedContextInterface,
+	Behat\Behat\Context\Context,
+	Behat\Behat\Context\SnippetAcceptingContext,
+    Behat\Behat\Tester,
+    Behat\Behat\EventDispatcher\Event,
+    Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
 Behat\Gherkin\Node\TableNode;
 use Symfony\Component\DomCrawler\Crawler;
@@ -20,7 +20,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 /**
  * Context used to define steps related to email sending.
  */
-class EmailContext extends BehatContext
+class EmailContext implements Context, SnippetAcceptingContext
 {
     protected $context;
 

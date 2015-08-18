@@ -7,7 +7,8 @@ use Symfony\Component\Config\FileLocator,
     Symfony\Component\DependencyInjection\Loader\YamlFileLoader,
     Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
-use Behat\Behat\Extension\ExtensionInterface;
+use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
 
 /*
  * This file is part of the SilverStripe\BehatExtension
@@ -31,7 +32,7 @@ class Extension implements ExtensionInterface
      * @param array            $config    Extension configuration hash (from behat.yml)
      * @param ContainerBuilder $container ContainerBuilder instance
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(ContainerBuilder $container, array $config)
     {
         if (!isset($config['framework_path'])) {
             throw new \InvalidArgumentException('Specify `framework_path` parameter for silverstripe_extension');
@@ -78,7 +79,7 @@ class Extension implements ExtensionInterface
      *
      * @param ArrayNodeDefinition $builder
      */
-    function getConfig(ArrayNodeDefinition $builder)
+    function configure(ArrayNodeDefinition $builder)
     {
         $builder->
             children()->
@@ -114,4 +115,28 @@ class Extension implements ExtensionInterface
             end()->
         end();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getConfigKey()
+    {
+        return 'mink';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function initialize(ExtensionManager $extensionManager)
+    {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function process(ContainerBuilder $container)
+    {
+//        $this->processSelectors($container);
+    }
+
 }

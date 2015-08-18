@@ -4,12 +4,11 @@ namespace SilverStripe\BehatExtension\Context;
 
 use Behat\Behat\Context\ClosuredContextInterface,
 	Behat\Behat\Context\TranslatedContextInterface,
-	Behat\Behat\Context\BehatContext,
-	Behat\Behat\Context\Step,
-	Behat\Behat\Event\StepEvent,
-	Behat\Behat\Event\FeatureEvent,
-	Behat\Behat\Event\ScenarioEvent,
-	Behat\Behat\Exception\PendingException,
+	Behat\Behat\Context\Context,
+	Behat\Behat\Context\SnippetAcceptingContext,
+    Behat\Behat\Tester,
+    Behat\Behat\EventDispatcher\Event,
+    Behat\Behat\Tester\Exception\PendingException,
 	Behat\Mink\Driver\Selenium2Driver,
 	Behat\Gherkin\Node\PyStringNode,
 	Behat\Gherkin\Node\TableNode;
@@ -21,7 +20,7 @@ require_once 'PHPUnit/Framework/Assert/Functions.php';
 /**
  * Context used to create fixtures in the SilverStripe ORM.
  */
-class FixtureContext extends BehatContext
+class FixtureContext implements Context, SnippetAcceptingContext
 {
 	protected $context;
 
