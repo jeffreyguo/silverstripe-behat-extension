@@ -56,9 +56,9 @@ If you are having issues running Selenium with your browser please check
 that you're on the [latest driver](https://code.google.com/p/selenium/downloads/list),
 since the download link above might be out of date.
 
-Ensure you have a supported version of firefox installed:
-
-	wget https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/26.0/mac/en-GB/Firefox%2026.0.dmg
+Download the latest [Firefox ESR](https://www.mozilla.org/en-US/firefox/organizations/all/) (Extended Support Release).
+It might be older than your currently installed Firefox.
+It's important to have a browser that's [supported by Selenium-Webdriver](http://docs.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-webdriver)
 
 Now install the SilverStripe project as usual by opening it in a browser and following the instructions.
 Protip: You can skip this step by using `[SS_DATABASE_CHOOSE_NAME]` in a global 
@@ -73,6 +73,16 @@ in your project root, or set is as an environment variable in your terminal sess
 
 ## Usage
 
+### Prevent Firefox from Automatically Updating
+
+The moment you open Firefox, it's going to try and update itself out of the stone age. To prevent this, open a new tab and go to `about:config`. There, change the following settings to `false`:
+
+- `app.update.auto`
+- `app.update.enabled`
+- `app.update.silent`
+
+Firefox will already have started the update, so close and delete it. The settings you changed should be stored as preferences, apart from the application files you've just deleted. Reinstall that ancient version. The next time you open it, and go to "About Firefox", you should see a button desperately pleading with you to "check for updates". Don't click that if you know what's good for you...
+
 ### Starting the Selenium Server
 
 You can run the server locally in a separate Terminal session:
@@ -81,7 +91,7 @@ You can run the server locally in a separate Terminal session:
 
 In some cases it may be necessary to start a specific version of firefox
 
-	java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.firefox.bin="/Applications/Firefox26.app/Contents/MacOS/firefox-bin"
+	java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.firefox.bin="/Applications/Firefox31.app/Contents/MacOS/firefox-bin"
 
 ### Running the Tests
 
@@ -92,6 +102,10 @@ Now you can run the tests (for example for the `framework` module):
 In order to run specific tests only, use their feature file name:
 
 	vendor/bin/behat @framework/login.feature
+	
+Or even run a single scenario by it's name (supports regular expressions):
+
+	vendor/bin/behat --name 'My scenario title' @framework
 
 This will start a Firefox browser by default. Other browsers and profiles can be configured in `behat.yml`.
 
@@ -580,13 +594,17 @@ It's based on the `vendor/bin/behat -di @cms` output.
 
 	Given /^I press the "([^"]*)" button$/
 
-	Given /^I click "([^"]*)" in the "([^"]*)" element$/
+	Given /^I (click|double click) "([^"]*)" in the "([^"]*)" element$/
 
 	Given /^I type "([^"]*)" into the dialog$/
 
 	Given /^I (?:press|follow) the "([^"]*)" (?:button|link), confirming the dialog$/
 
 	Given /^I (?:press|follow) the "([^"]*)" (?:button|link), dismissing the dialog$/
+    
+    Given /^I (click|double click) "([^"]*)" in the "([^"]*)" element, confirming the dialog$/
+
+    Given /^I (click|double click) "([^"]*)" in the "([^"]*)" element, dismissing the dialog$/
 
 	Given /^I confirm the dialog$/
 
