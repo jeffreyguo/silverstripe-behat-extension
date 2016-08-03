@@ -257,7 +257,6 @@ class EmailContext extends BehatContext
         $href = null;
         foreach ($tags as $tag) {
             $linkText = $tag->nodeValue;
-            var_dump($linkText);
             if(strpos($linkText, $httpText) !== false) {
                 $href = $linkText;
                 break;
